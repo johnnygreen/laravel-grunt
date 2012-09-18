@@ -70,7 +70,7 @@ cd assets/build                    // I have it setup so you can only grunt from
 grunt watch                        // Will now compile on file mod
 </pre>
 
-Open up a new tab and from the project root:
+Open up a new tab and from the project root (optional, PHP 5.4 required):
 <pre>
 php -S localhost:8888 -t public/   // PHP 5.4 built-in server
 </pre>
