@@ -3,50 +3,50 @@ Example of how to use Grunt.js with Laravel
 
 Love that yeoman just came out, but it was a bit to opinionated for my workflow.  As yeoman uses bower and grunt, here is an example of how to use those two packages with Laravel to output the all wonderful single css and single js file.  This example uses Coffee-Script and SASS with simple mustache temples attached to a global MZW.JST (MZW is the namespace I use at work, please feel free to change this in the grunt.js file).
 
-Folder Structure
+###Folder Structure
 
-├── application
-├── artisan
-├── assets
-│   ├── build
-│   │   ├── grunt.js
-│   │   └── package.json
-│   ├── coffee
-│   │   ├── app.coffee
-│   │   └── vendor
-│   ├── css
-│   │   ├── app.css
-│   │   └── vendor
-│   ├── js
-│   │   ├── app.js
-│   │   ├── templates.js
-│   │   └── vendor
-│   │       └── component.json
-│   ├── sass
-│   │   ├── _header.scss
-│   │   ├── app.scss
-│   │   └── vendor
-│   │       ├── _bootstrap-responsive.scss
-│   │       ├── _bootstrap.scss
-│   │       └── bootstrap
-│   └── templates
-│       └── test.ms
-├── bundles
-├── laravel
-├── paths.php
-├── public
-│   ├── css
-│   │   ├── all.css
-│   │   └── all.min.css
-│   ├── favicon.ico
-│   ├── img
-│   ├── index.php
-│   └── js
-│       ├── all.js
-│       └── all.min.js
-└── storage
+├── application<br/>
+├── artisan<br/>
+├── assets<br/>
+│   ├── build<br/>
+│   │   ├── grunt.js<br/>
+│   │   └── package.json<br/>
+│   ├── coffee<br/>
+│   │   ├── app.coffee<br/>
+│   │   └── vendor<br/>
+│   ├── css<br/>
+│   │   ├── app.css<br/>
+│   │   └── vendor<br/>
+│   ├── js<br/>
+│   │   ├── app.js<br/>
+│   │   ├── templates.js<br/>
+│   │   └── vendor<br/>
+│   │       └── component.json<br/>
+│   ├── sass<br/>
+│   │   ├── _header.scss<br/>
+│   │   ├── app.scss<br/>
+│   │   └── vendor<br/>
+│   │       ├── _bootstrap-responsive.scss<br/>
+│   │       ├── _bootstrap.scss<br/>
+│   │       └── bootstrap<br/>
+│   └── templates<br/>
+│       └── test.ms<br/>
+├── bundles<br/>
+├── laravel<br/>
+├── paths.php<br/>
+├── public<br/>
+│   ├── css<br/>
+│   │   ├── all.css<br/>
+│   │   └── all.min.css<br/>
+│   ├── favicon.ico<br/>
+│   ├── img<br/>
+│   ├── index.php<br/>
+│   └── js<br/>
+│       ├── all.js<br/>
+│       └── all.min.js<br/>
+└── storage<br/>
 
-I've added an 'assets' folder to the mix.  This repo is that folder.
+###I've added an 'assets' folder to the mix.  This repo is that folder.
 
 I assume you have the following already installed:
 - node
@@ -58,20 +58,24 @@ I assume you have the following already installed:
 - PHP 5.4 for some built it server goodness
 
 Get things rolling:
-`cd assets/build`                    // Move to the build dir
-`npm install`                        // Install all the grunt npm tasks
-`grunt`                              // Test it out  
+<pre>
+cd assets/build                    // Move to the build dir
+npm install                        // Install all the grunt npm tasks
+grunt                              // Test it out
+</pre>
 
 Then when you're ready to dev:
-`cd assets/build`                    // I have it setup so you can only grunt from the build dir
-`grunt watch`                        // Will now compile on file mod
-`cd ../..`                           // Back to the root dir
-`php -S localhost:8888 -t public/`   // PHP 5.4 built-in server
+<pre>
+cd assets/build                    // I have it setup so you can only grunt from the build dir
+grunt watch                        // Will now compile on file mod
+cd ../..                           // Back to the root dir
+php -S localhost:8888 -t public/   // PHP 5.4 built-in server
+</pre>
 
-If you want to use bower, I like to put that in assets/js/vendor
-`cd assets/js/vendor`
-`bower install`
+If you want to use bower, I like to put that in assets/js/vendor<br/>
+cd assets/js/vendor<br/>
+bower install<br/>
 
-Modify the grunt.js file to your liking.  
-For JavaScript concat you'll need to add each new file so they stay in the correct order.
-As long as your use SASS the app.scss will handle order of imported files for styles.
+Modify the grunt.js file to your liking.<br/>
+For JavaScript concat you'll need to add each new file so they stay in the correct order.<br/>
+As long as your use SASS the app.scss will handle order of imported files for styles.<br/>
