@@ -55,7 +55,7 @@ I assume you have the following already installed:
 - npm install coffee-script -g ( only if you want the coffee grunt task )
 - gem install compass ( only if you want to use SASS )
 - npm install bower -g ( assets/js/vendor/component.json ) 
-- PHP 5.4 for some built it server goodness
+- PHP 5.4 for some built-in server goodness
 
 Get things rolling:
 <pre>
