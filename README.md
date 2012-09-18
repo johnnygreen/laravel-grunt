@@ -76,8 +76,10 @@ php -S localhost:8888 -t public/   // PHP 5.4 built-in server
 </pre>
 
 If you want to use bower, I like to put that in assets/js/vendor<br/>
-cd assets/js/vendor<br/>
-bower install<br/>
+<pre>
+cd assets/js/vendor
+bower install                      // I've got a component.json file in there with a few handy libraries
+</pre>
 
 Modify the grunt.js file to your liking.<br/>
 For JavaScript concat you'll need to add each new file so they stay in the correct order.<br/>
