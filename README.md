@@ -68,7 +68,10 @@ Then when you're ready to dev:
 <pre>
 cd assets/build                    // I have it setup so you can only grunt from the build dir
 grunt watch                        // Will now compile on file mod
-cd ../..                           // Back to the root dir
+</pre>
+
+Open up a new tab and from the project root:
+<pre>
 php -S localhost:8888 -t public/   // PHP 5.4 built-in server
 </pre>
 
