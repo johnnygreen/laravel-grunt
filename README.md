@@ -8,6 +8,7 @@ Folder Structure
 ├── application
 ├── artisan
 ├── assets
+
 │   ├── build
 │   │   ├── grunt.js
 │   │   └── package.json
