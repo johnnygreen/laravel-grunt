@@ -83,4 +83,4 @@ bower install                      // I've got a component.json file in there wi
 
 Modify the grunt.js file to your liking.  Add / Remove tasks, etc.  Best get use to that file, it's important!<br/>
 For JavaScript concat you'll need to add each new file so they stay in the correct order.<br/>
-As long as your use SASS the app.scss will handle order of imported files for styles.<br/>
+As long as you use SASS the app.scss will handle order of imported files for styles.<br/>
