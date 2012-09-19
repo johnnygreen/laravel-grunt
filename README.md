@@ -1,7 +1,9 @@
 Example of how to use Grunt.js with Laravel
 ===========================================
 
-Love that yeoman just came out, but it was a bit too opinionated for my workflow.  As yeoman uses bower and grunt, here is an example of how to use those two packages with Laravel to output the all wonderful single css and single js file.  This example uses Coffee-Script and SASS with simple mustache templates attached to a global MZW.JST (MZW is the namespace I use at work, please feel free to change this in the grunt.js file).
+Love that yeoman just came out, but it was a bit too opinionated for my workflow.  
+As yeoman uses bower and grunt, here is an example of how to use those two packages with Laravel to output the all wonderful single css and single js file.  
+This example uses Coffee-Script and SASS with simple mustache templates attached to a global, JST.
 
 ###Folder Structure
 
