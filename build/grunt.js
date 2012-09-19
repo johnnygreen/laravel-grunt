@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 
     compass: {
       all: {
-        src: '../sass',
+        src:  '../sass',
         dest: '../css'
       }
     },
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 
     min: {
       all: {
-        src: ['../../public/js//all.js'],
+        src: ['../../public/js/all.js'],
         dest: '../../public/js/all.min.js'
       }
     },
@@ -71,18 +71,18 @@ module.exports = function(grunt) {
     jst: {
       compile: {
         options: {
-          namespace: 'MZW.JST',
+          namespace: 'JST',
           templateSettings: {interpolate : /\{\{(.+?)\}\}/g},
-          processName: function(filename) { return path.basename(filename, '.ms'); }
+          processName: function(filename) { return path.basename(filename, '.mustache'); }
         },
-        files: {'../js/templates.js': ['../templates/**/*.ms']}
+        files: {'../js/templates.js': ['../templates/**/*.mustache']}
       }
     },
 
     watch: {
       app: {
-        files: ['../sass/**/*.scss', '../coffee/**/*.coffee', '../templates/**/*.ms'], //'../css/**/*.css' '../js/**/*.js'
-        tasks: 'growl:start compass:all coffee:all jst concat cssmin:all min:all growl:done'
+        files: ['../sass/**/*.scss', '../coffee/**/*.coffee', '../templates/**/*.mustache'], //'../css/**/*.css' '../js/**/*.js'
+        tasks:  'growl:start compass:all coffee:all jst concat cssmin:all min:all growl:done'
       }
     }
   });
