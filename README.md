@@ -23,12 +23,12 @@ This example uses Coffee-Script and SASS with simple mustache templates attached
 │   │   ├── app.js<br/>
 │   │   ├── templates.js<br/>
 │   │   └── vendor<br/>
-│   │       └── component.json<br/>
+│   │     └── component.json<br/>
 │   ├── sass<br/>
 │   │   ├── _header.scss<br/>
 │   │   ├── app.scss<br/>
 │   │   └── vendor<br/>
-│   │       ├── _bootstrap-responsive.scss<br/>
+│   │       ├── _bootstrap-responsive.scss<br/>
 │   │       ├── _bootstrap.scss<br/>
 │   │       └── bootstrap<br/>
 │   └── templates<br/>
