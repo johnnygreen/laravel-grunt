@@ -121,7 +121,7 @@ class Server_Task
 	{
 	  $hostname = isset($args[0]) ? $args[0] : '0.0.0.0';
 	  $port = isset($args[1]) ? $args[1] : '80';
-	  $sudo = $port < 1024 ? 'sudo ' : '';
+	  $sudo = $port &lt; 1024 ? 'sudo ' : '';
   	  passthru($sudo . 'php -S ' . $hostname . ':' . $port . ' -t public/');
 	}
 }
