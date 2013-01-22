@@ -1,86 +1,143 @@
-Example of how to use Grunt.js with Laravel
-===========================================
+Laravel 3 + Grunt.js + Bower
+=============================================
 
 Love that yeoman just came out, but it was a bit too opinionated for my workflow. As yeoman uses bower and grunt, here is an example of how to use those two packages with Laravel to output the all wonderful single css and single js file. This example uses Coffee-Script and SASS with simple mustache templates attached to a global, JST.
 
 ###Folder Structure
-
-├── application<br/>
-├── artisan<br/>
-├── assets<br/>
-│   ├── build<br/>
-│   │   ├── grunt.js<br/>
-│   │   └── package.json<br/>
-│   ├── coffee<br/>
-│   │   ├── app.coffee<br/>
-│   │   └── vendor<br/>
-│   ├── css<br/>
-│   │   ├── app.css<br/>
-│   │   └── vendor<br/>
-│   ├── js<br/>
-│   │   ├── app.js<br/>
-│   │   ├── templates.js<br/>
-│   │   └── vendor<br/>
-│   │     └── component.json<br/>
-│   ├── sass<br/>
-│   │   ├── _header.scss<br/>
-│   │   ├── app.scss<br/>
-│   │   └── vendor<br/>
-│   │       ├── _bootstrap-responsive.scss<br/>
-│   │       ├── _bootstrap.scss<br/>
-│   │       └── bootstrap<br/>
-│   └── templates<br/>
-│       └── test.ms<br/>
-├── bundles<br/>
-├── laravel<br/>
-├── paths.php<br/>
-├── public<br/>
-│   ├── css<br/>
-│   │   ├── all.css<br/>
-│   │   └── all.min.css<br/>
-│   ├── favicon.ico<br/>
-│   ├── img<br/>
-│   ├── index.php<br/>
-│   └── js<br/>
-│       ├── all.js<br/>
-│       └── all.min.js<br/>
-└── storage<br/>
-
-###I've added an 'assets' folder to the mix.  This repo is that folder.
-
-I assume you have the following already installed:
-- node
-- npm
-- npm install grunt -g
-- npm install coffee-script -g ( only if you want the coffee grunt task )
-- gem install compass ( only if you want to use SASS )
-- npm install bower -g ( assets/js/vendor/component.json ) 
-- PHP 5.4 for some built-in server goodness
-
-Get things rolling:
+There are some junk files in there… they are from whatever current project I was working on at the time of scraping this out of a project.
 <pre>
-cd assets/build                    // Move to the build dir
-npm install                        // Install all the grunt npm tasks
-grunt                              // Test it out
+application/
+├── assets
+│   ├── README.md
+│   ├── build
+│   │   ├── README.md
+│   │   ├── grunt.js
+│   │   └── package.json
+│   ├── scripts
+│   │   ├── app.coffee
+│   │   ├── amd
+│   │   ├── build
+│   │   │   ├── amd.coffee
+│   │   │   ├── amd.js
+│   │   │   └── app.js
+│   │   ├── lib
+│   │   │   └── InfiniteSlider.js
+│   │   └── vendor
+│   │       ├── component.json
+│   │       └── fitvids.js
+│   └── styles
+│       ├── app.scss
+│       ├── build
+│       │   ├── app.css
+│       │   └── vendor
+│       │       └── grid.css
+│       ├── components
+│       │   ├── _common.scss
+│       │   ├── _fonts.scss
+│       │   ├── _footer.scss
+│       │   ├── _header.scss
+│       │   ├── _mixins.scss
+│       │   └── _variables.scss
+│       ├── config.rb
+│       ├── pages
+│       │   ├── _home.scss
+│       │   └── _interview.scss
+│       └── vendor
+│           ├── _grid.scss
+│           └── reset.css
+├── tasks
+│   ├── assets.php
+│   └── server.php
+└── public
+    ├── css
+    │   ├── all.css
+    │   └── all.min.css
+    └── js
+        ├── all.js
+        └── all.min.css
+
 </pre>
 
-Then when you're ready to dev:
+###Put these two folders in your Laravel application folder
+
+I assume you're on OSX with PHP 5.4… and you have node and npm installed. Node and NPM can easily be installed via nodejs.org.  For PHP and other packages I use homebrew with the josegonzalez and homebrew-php taps added.
+
 <pre>
-cd assets/build                    // I have it setup so you can only grunt from the build dir
-grunt watch                        // Will now compile on file mod
+$ artisan assets
+
+ Assets Pipeline for Laravel
+
+  assets                 - this menu
+  assets:setup [options] - runs the setup process
+  assets:build           - builds the assets
+  assets:watch           - starts the watch process
+
+  options 
+  -ns                    - install dependencies without using sudo 
+</pre>
+Here is the code behind these tasks...
+<pre>
+public function setup($args = array())
+{
+   $sudo = (isset($args[0]) && trim($args[0]) === '-ns') ? '' : 'sudo';
+
+   passthru($sudo . ' gem install compass');
+   passthru($sudo . ' gem install compass-rgbapng');
+   passthru($sudo . ' gem install breakpoint');
+   passthru($sudo . ' gem install terminal-notifier');
+   passthru($sudo . ' gem install sass-globbing');
+   passthru($sudo . ' npm install grunt -g');
+   passthru($sudo . ' npm install bower -g');
+   passthru('cd application/assets/build/ && ' . $sudo . ' npm install');
+   passthru('cd application/assets/scripts/vendor/ && bower install');
+}
+
+public function build()
+{
+   passthru('cd application/assets/build/ && grunt');
+}
+
+public function watch()
+{
+   passthru('cd application/assets/build/ && grunt watch');
+}
+</pre>
+<pre>
+$ artisan server 0.0.0.0 80
+</pre>
+<pre>
+class Server_Task
+{
+  /**
+   *  artisan server ip_address/hostname port
+   *
+   *  i.e. 
+   *  artisan server 0.0.0.0 80
+   *  artisan server my.google.dev 3000
+   *
+   *  for hostnames add the name to /etc/hosts
+   */
+	public function run($args = array())
+	{
+	  $hostname = isset($args[0]) ? $args[0] : '0.0.0.0';
+	  $port = isset($args[1]) ? $args[1] : '80';
+	  $sudo = $port < 1024 ? 'sudo ' : '';
+  	  passthru($sudo . 'php -S ' . $hostname . ':' . $port . ' -t public/');
+	}
+}
 </pre>
 
-Open up a new tab and from the project root (optional, PHP 5.4 required):
+To use bower to manage your js dependencies, it's installed in assets/scripts/vendor<br/>
 <pre>
-php -S localhost:8888 -t public/   // PHP 5.4 built-in server
+cd assets/scripts/vendor
+bower install // will install what's in the component.json
+bower install jquery --save // example of installing new js dep
 </pre>
 
-If you want to use bower, I like to put that in assets/js/vendor<br/>
-<pre>
-cd assets/js/vendor
-bower install                      // I've got a component.json file in there with a few handy libraries
-</pre>
+After installing something with bower, of course then you will need to add that file to  the grunt.js file, same goes with CSS files. As for SCSS, just include each new file in the app.scss and use an _ underscore for files so they will not be included by compass when compiling.
 
-Modify the grunt.js file to your liking.  Add / Remove tasks, etc.  Best get use to that file, it's important!<br/>
-For JavaScript concat you'll need to add each new file so they stay in the correct order.<br/>
-As long as you use SASS the app.scss will handle order of imported files for styles.<br/>
+Modify the grunt.js file to your liking.  Add / Remove tasks, etc.  Best get use to that file, it's important!
+
+Didn't really touch on amd, but it's pretty straight forward… put amd in the assets/scripts/amd … install require.js with bower, include require.js in the grunt.js file and it should include all the amd files in the build WITHOUT having to add them to the grunt file one by one.
+
+If you have questions feel free to open an issue.

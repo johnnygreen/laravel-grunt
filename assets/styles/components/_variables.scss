@@ -1,0 +1,53 @@
+$base-font-color: #626263;
+$base-font-size: 16px;
+$base-line-height: $base-font-size + $base-font-size / 2;
+$accent-color: #b2b2b2;
+$border-color: #ffffff;
+$dark-color: #000000;
+$medium-color: #666666;
+$black: #000000;
+$white: #ffffff;
+
+$baseline: $base-line-height;
+
+$font-light: "Proxima Nova Light", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$font-normal: "Proxima Nova", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$font-semi-bold: "Proxima Nova Semi-Bold", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$font-bold: "Proxima Nova Bold", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+
+$header-font-family: $font-normal;
+$header-font-family-bold: $font-semi-bold;
+$body-font-family: $font-normal;
+$body-font-color: $base-font-color;
+$nav-font-color: #646464;
+
+$header-height: 100px;
+$header-height-mini: 60px;
+$breadcrumbs-height: 40px;
+$container-width: 960px;
+$container-width-wide: 1200px;
+
+$desktop: 960px; //600-960
+$tablet: 600px; //480-600
+$mobile: 480px; //320-480
+
+$mobile-width: 519px;
+$tablet-min-width: 520px;
+$tablet-max-width: 959px;
+$desktop-width: 960px;
+$large-screen-width: 1300px;
+
+$smartphone-portrait: 320px;
+$smartphone-landscape: 480px;
+$ipad-portrait: 767px;
+$ipad-landscape: 980px;
+$desktop-large: 1824px;
+
+$smartphones: 320px;  // smartphones, iPhone, portrait 480x320 phones
+$small-tablets: 481px;  // portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide.
+$portrait-tablets: 641px;  // portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 and 854x480 phones
+$small-desktops: 961px;  // tablet, landscape iPad, lo-res laptops ands desktops
+$desktops: 1025px; // big landscape tablets, laptops, and desktops
+$big-desktops: 1281px; // hi-res laptops and desktops
+
+$block-padding: 15px;

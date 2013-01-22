@@ -1,0 +1,49 @@
+.header {
+	z-index: 1;
+	width: 100%;
+	background-color: white;
+	text-align: center;
+	padding: 10px 0;
+	font-family: $font-light;
+
+	.title {
+		color: #232338;
+		font-size: 18px;
+		line-height: 18px;
+		text-transform: uppercase;
+	}
+
+	.logo {
+		margin: auto;
+		padding-bottom: 10px;
+		width: 180px;
+	}
+
+	.shop {
+		position: fixed;
+		top: 0;
+		right: 10px;
+		margin: 20px;
+		font-size: 16px;
+		text-transform: uppercase;
+		z-index: 1;
+
+		@include apply-to(less-than, 480px) {
+			display: none;
+		}
+	}
+
+	.back {
+  	position: fixed;
+		top: 0;
+		left: 10px;
+		margin: 20px;
+		font-size: 16px;
+		text-transform: uppercase;
+		z-index: 1;
+	}
+
+	.home & .back {
+	  display: none;
+  }
+}

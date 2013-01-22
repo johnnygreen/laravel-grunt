@@ -1,0 +1,242 @@
+@include establish-baseline;
+
+html {
+  line-height: $baseline;
+}
+
+body {
+  font-family: $font-light;
+  color: $dark-color;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  border: 1px solid transparent;
+  color: $black;
+  @include single-transition($property: color, $duration: 0.1s);
+
+  &:hover {
+    color: $accent-color;
+  }
+
+  &:focus { outline: none; }
+}
+
+p > a {
+  font-family: $font-semi-bold;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+iframe {
+  border: none;
+}
+
+strong {
+  font-family: $font-bold;
+  color: $black;
+  font-weight: normal;
+}
+
+p,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+blockquote,
+td,
+th {
+  margin: 0;
+  padding: 0;
+  font-size: $base-font-size;
+  line-height: $baseline;
+}
+
+ul, ol { margin-bottom: $baseline; }
+
+p {
+  margin-bottom: $baseline;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#{headings()} {
+  font-family: $header-font-family;
+  color: $dark-color;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0;
+  line-height: $baseline * 2;
+}
+
+h1 {
+  // @include adjust-font-size-to(32px);
+  font-size: 32px;
+}
+
+h2 {
+  // @include adjust-font-size-to(28px);
+  font-size: 28px;
+}
+
+h3 {
+  // @include adjust-font-size-to(24px);
+  font-size: 24px;
+}
+
+h4 {
+  // @include adjust-font-size-to(20px);
+  font-size: 20px;
+}
+
+h5 {
+  // @include adjust-font-size-to(18px);
+  font-size: 18px;
+}
+
+h6 {
+  // @include adjust-font-size-to(16px);
+  font-size: 16px;
+}
+
+.flip-90 { @include rotate(90deg); }
+.flip-180 { @include rotate(180deg); }
+.flip-270 { @include rotate(270deg); }
+
+// Our main button.
+// Use: Suitable for the main action on a page.
+//
+// .inverted - White version.
+// .full     - More padding and uses display: block; and 100% width.
+// .half     - Takes up 50% width.
+// :hover    - Subtle hover highlight.
+// :active   - Shifts down as the button is pressed. Gives the user some feedback that they clicked.
+.button {
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: $baseline;
+  font-family: $font-light;
+  cursor: pointer;
+  background-color: $dark-color;
+  color: #fff;
+  -webkit-appearance: none;
+  border: 1px solid $dark-color;
+
+  @include transition(background-color 0.3s linear);
+  @include inline-block;
+  @include user-select(none);
+
+  &.small {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+
+  &.full,
+  &.half {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-family: $font-light;
+  }
+
+  &.half {
+    display: inline-block;
+    margin-right: -4px;
+    width: 50%;
+  }
+
+  &:active {
+    @include translateY(0.5px);
+  }
+
+  &:hover {
+    background-color: lighten($dark-color, 15%);
+    color: #ffffff;
+  }
+
+  &.inverted {
+    background-color: #ffffff;
+    color: $dark-color;
+    border: 1px solid #e5e5e5;
+
+    &:hover {
+      background-color: darken(#ffffff, 5%);
+    }
+  }
+
+  &.simple {
+    background-color: transparent;
+    font-size: $base-font-size;
+    color: $accent-color;
+    padding: 0;
+    border: none;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 768px) {
+  .header { position: static; }
+
+  .footer { text-align: center; }
+  .footer ul { margin-bottom: 24px; }
+  .footer .social { position: relative; }
+
+  .row-fluid [class*="span"] {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .row-fluid [class*="span"] {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/*
+|----------------------------------------------------------------
+| .contain determines the width of the website.
+| It helps us make some parts 100% width and other parts contained.
+| Better than having one main container.
+|----------------------------------------------------------------
+*/
+.contain {
+  max-width: $container-width;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+@media only screen and (min-width: $container-width-wide) {
+  .contain { max-width: $container-width-wide; }
+}
+
+.container {
+  width: auto;
+  max-width: none;
+
+  .content {
+    @extend %clearfix;
+
+    @include apply-to(less-than, $desktop) {
+      padding-top: 0;
+    }
+  }
+}

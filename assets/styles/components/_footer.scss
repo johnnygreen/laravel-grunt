@@ -1,0 +1,56 @@
+.footer {
+	position: relative;
+	background-color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: $font-light;
+
+	ul {
+		@extend %inline-list;
+
+		a {
+			display: block;
+			padding: 4px 0;
+			font-size: 16px;
+			margin: 14px 0px;
+		}
+
+		&.links {
+  	  a {
+  	    margin: 14px 40px;
+    	  border-bottom: 1px solid transparent;
+
+  			&:hover {
+          border-bottom: 1px solid $accent-color;
+  			}
+  	  }
+  	}
+
+  	&.social {
+  		position: absolute;
+  		top: 0;
+  		right: 10px;
+
+  		a {
+  			padding: 4px;
+  			font-size: 22px;
+  		}
+
+  		@include apply-to(less-than, 768px) {
+  			position: relative;
+  			text-align: center;
+  			width: 100%;
+  			right: 0;
+  		}
+  	}
+	}
+}
+
+.footer-overlay {
+	@include modal(600px, 450px, 40px);
+	font-family: $font-normal;
+
+	.modal-content {
+	  background-color: white;
+  }
+}

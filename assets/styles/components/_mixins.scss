@@ -1,0 +1,264 @@
+// Custom media Query
+// Use: If you want to specify a size inline.
+// Example:
+// @include apply-to(less-than, 1200px) {}
+// Will apply to anything smaller than 1200px
+@mixin apply-to($maxmin: less-than, $size: 1200px) {
+
+	@if $maxmin == less-than {
+		$maxmin: max;
+	} @if $maxmin == greater-than {
+		$maxmin: min;
+	}
+
+	@media only screen and (#{$maxmin}-width: $size) { @content; }
+}
+
+// Allow or prevent an element from being selected
+// Example:
+//     @include user-select(none)
+// $select: none, text, all, element
+@mixin user-select($select: none) {
+	-webkit-touch-callout: $select;
+		-webkit-user-select: $select;
+		 -khtml-user-select: $select;
+			 -moz-user-select: $select;
+				-ms-user-select: $select;
+						user-select: $select;
+}
+
+// Image Replacement
+// Use: To replace text with an image
+// Example:
+//     @include ir;
+//		 @include background(image-url("misc/logo.png"));
+@mixin ir {
+	border: 0;
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	background-color: transparent;
+}
+
+// Size
+// Use: To set the width and height of an element
+// Example:
+//     @include size(200px, 100px);
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+// Remove background
+// Use: Remove any background images or gradients
+@mixin remove-bg {
+	background-color: transparent;
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+// Box Sizing
+// Use: Cross-browser box-sizing (IE7 with the boxsizing.htc)
+// Example:
+//     @include box-sizing(border-box);
+// $sizing: border-box, content-box
+@mixin box-sizing($sizing) {
+	-webkit-box-sizing: $sizing;
+		 -moz-box-sizing: $sizing;
+					box-sizing: $sizing;
+	*behavior: url(/css/boxsizing.htc);
+}
+
+// Cross-browser prefixer
+// Use: Add vendor prefixes to properties
+// Example:
+//     @include vendor(border-radius, 10px);
+// Outputs border-radius with all vendor prefixes
+@mixin vendor($property, $value){
+  -webkit-#{$property}:$value;
+  	 -moz-#{$property}:$value;
+  		-ms-#{$property}:$value;
+  		 -o-#{$property}:$value;
+  				#{$property}:$value;
+}
+
+// Retina background image
+// Use: Apply a separate background image for retina displays
+// Example:
+//     @include image-2x('/img/picture@2x.jpg', 200px, 150px);
+// Include this mixin last so it overwrites the default background image on retina displays
+@mixin image-2x($image, $width, $height) {
+	@media (-webkit-min-device-pixel-ratio: 2),
+				 (min-resolution: 192dpi) {
+		/* on retina, use image that's scaled by 2 */
+		background-image: url($image);
+		background-size: $width $height;
+	}
+}
+
+// Dropdown styling
+// Use: Apply to a ul to make it a dropdown
+@mixin dropdown-box {
+	position: absolute;
+	min-width: 0;
+	border: 1px solid #CCC;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	@include rgba-background-inline(rgba(255, 255, 255, 0.95));
+
+	li {
+		display: block;
+		overflow: hidden;
+		margin-right: 0;
+
+		a {
+			display: block;
+		}
+	}
+}
+
+// Modal
+// Use: Create a modal window.
+// Example:
+//     @include modal(800px, 600px, 30px);
+// This will position the window in the center of the page
+// Include a button with the class .close-btn to style a close button
+// Be sure everything is contained in .content
+@mixin modal($width, $height, $padding) {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	@include rgba-background-inline(rgba(244, 244, 244, 0.8));
+
+	@include apply-to(less-than, 480px) {
+	  position: absolute;
+	}
+
+	& > * {
+		position: absolute;
+		overflow: hidden;
+		z-index: 100;
+		width: $width;
+		height: $height;
+		top: 50%;
+		margin-top: -$height / 2;
+		left: 50%;
+		margin-left: -$width / 2;
+		background-color: transparent;
+		border: 1px solid $border-color;
+		padding: $padding;
+		@include box-sizing(border-box);
+
+		@include apply-to(less-than, 480px) {
+		  position: relative;
+  		width: auto;
+  		height: auto;
+  		top: 0;
+  		left: 0;
+  		margin: 0;
+		}
+
+		.close-btn {
+  		position: absolute;
+  		top: $padding / 2.5;
+  		right: $padding / 2.5;
+  		background-color: transparent;
+  		border: none;
+  		width: $padding / 2;
+  		height: $padding / 2;
+  		background-repeat: no-repeat;
+  		cursor: pointer;
+  		@include ir;
+  		@include background(image-url("misc/x.png"));
+  		background-size: $padding / 2 $padding / 2;
+  	}
+	}
+
+	.no-backgroundsize & > * .close-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// Easier animation
+// Example:
+// @include keyframes(move) {
+//   0%   { left: 0; }
+//   100% { left: 100px; }
+// }
+// .box {
+//   @include animation(move 0.5s ease infinite alternate);
+// }
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content
+	}
+	@-moz-keyframes #{$name} {
+		@content
+	}
+	@-ms-keyframes #{$name} {
+		@content
+	}
+	@-o-keyframes #{$name} {
+		@content
+	}
+	@keyframes #{$name} {
+		@content
+	}
+}
+
+@mixin animation($value) {
+	-webkit-animation: $value;
+	-moz-animation: $value;
+	-ms-animation: $value;
+	-o-animation: $value;
+	animation: $value;
+}
+
+@mixin font-size( $decimal-size, $keyword: null ) {
+  @if $keyword{ font-size: $keyword; }
+  @else { font-size: $decimal-size * $base-font-multiplier * 16px;}
+  font-size: $decimal-size * 1rem;
+}
+
+// Nav % extend
+// Use: Turn a ul list into a horizontal list
+// Example:
+//     ul {
+//       @extend %inline-list;
+//     }
+// The list is now layed out horizontally
+%inline-list {
+	list-style-type: none;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	@extend %clearfix;
+
+	& > li,
+	& > li > a {
+		@include inline-block;
+		margin-right: -4px;
+
+		&:last-child{
+			margin-right: 0px;
+		}
+	}
+}
+
+%clearfix {
+  *zoom: 1;
+
+  &:before, &:after {
+      content: "";
+      display: table;
+  }
+
+  &:after {
+      clear: both;
+  }
+}

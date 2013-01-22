@@ -1,0 +1,11 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "hammer": "ae3ba14dc003adcea59f4ef6498112195cc982ff",
+    "bootstrap": "~2.2.2",
+    "jquery": "~1.9",
+    "jquery.cookie": "~1.2.0"
+  }
+}

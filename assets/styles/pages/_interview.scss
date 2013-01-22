@@ -1,0 +1,53 @@
+.interview-page {
+
+  .container & {
+    overflow: hidden;
+  }
+
+  &.content {
+    padding: 0 20px;
+  }
+
+  #player { background-color: black; }
+
+  .row-fluid,
+  .fluid-width-video-wrapper {
+    margin-bottom: $baseline;
+  }
+
+  .fluid-width-video-wrapper {
+    background-color: black;
+  }
+
+  .images {
+  	img {
+  		display: block;
+  		margin-bottom: $baseline;
+  		cursor: pointer;
+  		max-width: 100%;
+
+  		&.fixed {
+  			position: fixed;
+  		}
+  	}
+  }
+
+  .entries {
+  	.entry {
+  		margin-bottom: $baseline;
+  		font-size: 16px;
+  		font-family: $font-normal;
+
+  		.answer {
+  			margin-top: 0;
+  			color: #666666;
+  		}
+  	}
+  }
+
+  .lightbox-container {
+  	@include modal(800px, 650px, 40px);
+  	text-align: center;
+  	cursor: pointer;
+  }
+}
