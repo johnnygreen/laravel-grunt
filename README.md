@@ -4,7 +4,7 @@ Laravel 3 + Grunt.js + Bower
 Love that yeoman just came out, but it was a bit too opinionated for my workflow. As yeoman uses bower and grunt, here is an example of how to use those two packages with Laravel to output the all wonderful single css and single js file. This example uses Coffee-Script and SASS with simple mustache templates attached to a global, JST.
 
 ###Folder Structure
-There are some junk files in there… they are from whatever current project I was working on at the time of scraping this out of a project.
+There are some junk files in there… they can be ignored / deleted.
 <pre>
 application/
 ├── assets
@@ -28,9 +28,7 @@ application/
 │   └── styles
 │       ├── app.scss
 │       ├── build
-│       │   ├── app.css
-│       │   └── vendor
-│       │       └── grid.css
+│       │   └── app.css
 │       ├── components
 │       │   ├── _common.scss
 │       │   ├── _fonts.scss
@@ -139,5 +137,7 @@ After installing something with bower, of course then you will need to add that 
 Modify the grunt.js file to your liking.  Add / Remove tasks, etc.  Best get use to that file, it's important!
 
 Didn't really touch on amd, but it's pretty straight forward… put amd in the assets/scripts/amd … install require.js with bower, include require.js in the grunt.js file and it should include all the amd files in the build WITHOUT having to add them to the grunt file one by one.
+
+After running artisan assets:build or watch … the files will be compiled into the public folder.  In your main layout, just include min or non-min file.
 
 If you have questions feel free to open an issue.
