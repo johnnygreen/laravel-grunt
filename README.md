@@ -8,7 +8,6 @@ There are some junk files in there… they can be ignored / deleted.
 <pre>
 application/
 ├── assets
-│   ├── README.md
 │   ├── build
 │   │   ├── README.md
 │   │   ├── grunt.js
