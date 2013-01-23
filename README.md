@@ -80,10 +80,7 @@ public function setup($args = array())
    $sudo = (isset($args[0]) && trim($args[0]) === '-ns') ? '' : 'sudo';
 
    passthru($sudo . ' gem install compass');
-   passthru($sudo . ' gem install compass-rgbapng');
-   passthru($sudo . ' gem install breakpoint');
    passthru($sudo . ' gem install terminal-notifier');
-   passthru($sudo . ' gem install sass-globbing');
    passthru($sudo . ' npm install grunt -g');
    passthru($sudo . ' npm install bower -g');
    passthru('cd application/assets/build/ && ' . $sudo . ' npm install');
