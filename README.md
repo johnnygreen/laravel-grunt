@@ -42,16 +42,17 @@ application/
 │       └── vendor
 │           ├── _grid.scss
 │           └── reset.css
-├── tasks
-│   ├── assets.php
-│   └── server.php
-└── public
-    ├── css
-    │   ├── all.css
-    │   └── all.min.css
-    └── js
-        ├── all.js
-        └── all.min.css
+└── tasks
+    ├── assets.php
+    └── server.php
+
+public/
+├── css
+│   ├── all.css
+│   └── all.min.css
+└── js
+    ├── all.js
+    └── all.min.css
 
 </pre>
 
