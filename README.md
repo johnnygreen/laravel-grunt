@@ -62,6 +62,7 @@ I assume you're on OSX with PHP 5.4… and you have node and npm installed. Node
 
 FYI - I have an alias for `alias artisan="php artisan"`
 
+### artisan assets command
 <pre>
 $ artisan assets
 
@@ -99,6 +100,7 @@ public function watch()
    passthru('cd application/assets/build/ && grunt watch');
 }
 </pre>
+### artisan server command
 <pre>
 $ artisan server 0.0.0.0 80
 </pre>
