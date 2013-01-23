@@ -133,6 +133,7 @@ bower install // will install what's in the component.json
 bower install jquery --save // example of installing new js dep
 </pre>
 
+### Important Details
 After installing something with bower, of course then you will need to add that file to  the grunt.js file, same goes with CSS files. As for SCSS, just include each new file in the app.scss and use an _ underscore for files so they will not be included by compass when compiling.
 
 Modify the grunt.js file to your liking.  Add / Remove tasks, etc.  Best get use to that file, it's important!
