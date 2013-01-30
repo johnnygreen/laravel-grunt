@@ -57,7 +57,7 @@ public/
 
 </pre>
 
-###Put the assets folder in your Laravel application folder, put the tasks in your application/tasks folder
+###Put the assets folder and the new tasks in your Laravel application folder
 
 I assume you're on OSX with PHP 5.4… and you have node and npm installed. Node and NPM can easily be installed via nodejs.org.  For PHP and other packages I use homebrew with the josegonzalez and homebrew-php taps added.
 
