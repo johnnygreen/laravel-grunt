@@ -125,7 +125,7 @@ class Server_Task
 	}
 }
 </pre>
-### Twitter Bower
+### artisan bower
 To use bower to manage your js dependencies, it's installed in assets/scripts/vendor<br/>
 <pre>
 cd assets/scripts/vendor
