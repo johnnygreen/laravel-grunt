@@ -44,6 +44,7 @@ application/
 │           └── reset.css
 └── tasks
     ├── assets.php
+    ├── bower.php
     └── server.php
 
 public/
