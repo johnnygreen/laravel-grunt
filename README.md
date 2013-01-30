@@ -125,7 +125,7 @@ class Server_Task
 	}
 }
 </pre>
-### artisan bower
+### artisan bower command
 To use bower to manage your js dependencies, it's installed in assets/scripts/vendor<br/>
 <pre>
 cd assets/scripts/vendor
