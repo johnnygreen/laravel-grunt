@@ -1,7 +1,6 @@
 {
-  "name": "mzw-build",
-  "website": "http://www.mzwallace.com",
-  "description": "Build script for www.mzwallace.com",
+  "name": "build",
+  "description": "Build Script for Laravel 3",
   "version": "1.0.0",
   "main": "grunt.js",
   "dependencies": {
@@ -17,7 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
-  "author": "Johnny Green twitter@bemusedjohnny github@johnnygreen",
+  "repository": "http://github.com/johnnygreen/laravel-grunt",
+  "author": "Johnny Green twitter@j0hnnygreen github@johnnygreen",
   "license": "MIT"
 }
