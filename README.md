@@ -1,4 +1,4 @@
-Update: This is old.  Back when this first came out Bower and Grunt were not so intertwined as they are today.  And Grunt was extremely new with no examples on the net of how to use it in a PHP MVC framework.  Laravel was still on version 3 and did not have a 'serve' command like it does now in version 4.  I suppose it could still be useful to some people though!  Enjoy!
+Update: This is old.  Back when I first released this example Bower and Grunt were not so intertwined as they are today.  Grunt was extremely new with no examples on the net of how to use it in a PHP MVC framework and the plugins that did exist had no troubleshooting or support docs.  Laravel was still on version 3 and did not have a 'serve' command like it does now in version 4.  I suppose it could still be useful to some people though!  Enjoy!
 
 
 Laravel 3 + Grunt.js + Bower
